@@ -24,7 +24,6 @@ app.get('/restaurants/:restID/bookedTimes', (req, res) => {
 });
 
 app.get('/restaurants/:restID/reservations', (req, res) => {
-  console.log(req.params.restID, req.query.partySize, req.query.dateTime);
   models.queryAvailableReservations(req.params.restID, req.query.partySize, req.query.dateTime, (err, results) => {
     if (err) {
       res.status(400).send(err);
