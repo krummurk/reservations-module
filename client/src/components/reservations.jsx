@@ -160,9 +160,10 @@ const SelectATimeText = styled.div`
   `;
 
 class Reservations extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      restID: this.props.path.split('/')[2] || '001',
       bookedTimes: "",
       selectedDate: moment().format("LL"),
       selectedTime: "12:30 PM", 
@@ -177,8 +178,8 @@ class Reservations extends React.Component {
   }
 
   getBookedTimesRequest() {
-    var restID = Math.floor(Math.random()*100+1).toString().padStart(3, '0');
-    axios.get(`/restaurants/${restID}/bookedTimes`)
+    console.log(this.state.restID)
+    axios.get(`/API/restaurant/reservation/${this.state.restID}/bookedTimes`)
       .then((result) => {
         this.setState({
           bookedTimes: result.data,
@@ -190,13 +191,11 @@ class Reservations extends React.Component {
   }
 
   getAvailableReservations() {
-    let restID = '001';
     let partySize = this.state.selectedPartySize;
     let date = this.state.selectedDate;
     let time = this.state.selectedTime;
     let dateTime = moment(date + ' ' + time).format("YYYY-MM-DD HH:mm:ss");
-
-    axios.get(`/restaurants/${restID}/reservations/?partySize=${partySize}&dateTime=${dateTime}`)
+    axios.get(`/API/restaurant/reservation/${this.state.restID}/reservations/?partySize=${partySize}&dateTime=${dateTime}`)
       .then((result) => {
         var reservationArr = [];
         for (let i = 0; i < result.data.length; i++) {
