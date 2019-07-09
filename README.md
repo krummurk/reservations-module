@@ -1,6 +1,6 @@
 # Open Table Reservation Module
 
-> Welcome to the Reservations module for OpenRestaurant! The following are required user inputs: party size, requested date, and requested time. This data is sent via HTTP request to the Express server where availability is queried from the MySQL database. Data is returned and the availability is rendered on buttons on the module. 
+Welcome to the Reservations module for OpenRestaurant! The following are required user inputs: party size, requested date, and requested time. This data is sent via HTTP request to the Express server where availability is queried from the MySQL database. Data is returned and the availability is rendered on buttons on the module. 
 
 Styled-Components were used for all modules for this web app to ensure that there would not be any styling conflicts. To ensure symmetry and proper sub-component spacing, I used CSS Flexbox and Grid. Media queries were applied to enable responsive rendering for varying screen devices. 
 
@@ -33,7 +33,7 @@ Back-end technologies:
 
 ## Usage
 
-> User selects party size from dropdown menu, time from dropdown menu, and date from dropdown calendar. 
+User selects party size from dropdown menu, time from dropdown menu, and date from dropdown calendar. 
 
 ## Requirements
 
